@@ -8,25 +8,28 @@ color black = #000000;
 color pink =  #FDD4DE;
 
 // Player variables
-float playerx, playery, playerd;
-float playerx2, playery2, playerd2;
+float player1x, player1y, player1d;
+float player2x, player2y, player2d;
 
 //Ball variables
 float ballx, bally, balld;
 float vx, vy;
+
+//Score variables
+int p1score;
 
 //Keyboard variables
 boolean wKey, sKey, aKey, dKey, upKey, downKey, leftKey, rightKey;
 
 void setup() {
   size(600, 600, P2D);
-  playerx = width/2;
-  playery = height/2;
-  playerd = 100;
+  player1x = 500;
+  player1y = 100;
+  player1d = 100;
   
-  playerx2 = width/2;
-  playery2 = height/2;
-  playerd2 = 100;
+  player2x = width/2;
+  player2y = height/2;
+  player2d = 100;
   
   //ball setup
   ballx = width/2;
@@ -45,13 +48,16 @@ void draw() {
   strokeWeight(5);
   stroke(black);
   fill(white);
-  circle(playerx, playery, playerd);
+  circle(player1x, player1y, player1d);
+  fill(255,0,0);
+  textSize(30);
+  text(p1score, player1x, player1y);
   
   //player 2
   strokeWeight(5);
   stroke(white);
   fill(black);
-  circle(playerx2, playery2, playerd2);
+  circle(player2x, player2y, player2d);
   
   //ball
   strokeWeight(3);
@@ -59,19 +65,25 @@ void draw() {
   fill(pink);
   circle(ballx, bally, balld);
   
+  //net
+  strokeWeight(3);
+  stroke(0);
+  fill(0);
+  circle(width/2, height, 200);
+  
   //ball movement
   ballx = ballx + vx;
   bally = bally + vy;
   
   //player movement
-  if (wKey) playery -= 5;
-  if (sKey) playery +=5;
-  if (aKey) playerx -= 5;
-  if (dKey) playerx += 5;
-  if (upKey) playery2 -= 5;
-  if (downKey) playery2 += 5;
-  if (leftKey) playerx2 -= 5;
-  if (rightKey) playerx2 += 5;
+  if (wKey) player1y -= 5;
+  if (sKey) player1y +=5;
+  if (aKey) player1x -= 5;
+  if (dKey) player1x += 5;
+  if (upKey) player2y -= 5;
+  if (downKey) player2y += 5;
+  if (leftKey) player2x -= 5;
+  if (rightKey) player2x += 5;
   
   //bouncing code
   if (bally <= 0) { //top
@@ -94,11 +106,24 @@ void draw() {
     ballx = width;
   }
   
-  if ( dist(playerx, playery, ballx, bally) <= playerd/2 + balld/2 ) {
-    vx = vy = 0;
-    
+  if ( dist(player1x, player1y, ballx, bally) <= player1d/2 + balld/2 ) {
+    vx = (ballx - player1x)/5; 
+    vy = (bally - player1y)/5;
   }
+  
+  if ( dist(player2x, player2y, ballx, bally) <= player2d/2 + balld/2 ) {
+    vx = (ballx - player2x)/5; 
+    vy = (bally - player2y)/5;
+  }
+  
+  if ( dist(width/2, height, ballx, bally) <= 100 + balld/2 ) {
+    p1score = p1score + 1;
+    ballx = width/2;
+    bally = 50;
+  }
+    
 }
+
 
 void keyPressed() {
   if (key == 'w') wKey = true;
