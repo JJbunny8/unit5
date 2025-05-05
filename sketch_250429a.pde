@@ -8,6 +8,8 @@
 color white = #ffffff;
 color black = #000000;
 color pink =  #FDD4DE;
+color blue =  #bde0fe;
+color green = #b9fbc0;
 
 // Player variables
 float player1x, player1y, player1d;
@@ -32,19 +34,19 @@ void setup() {
   size(600, 600, P2D);
   player1x = width/2;
   player1y = 0;
-  player1d = 150;
+  player1d = 120;
   
   player2x = width/2;
   player2y = height;
-  player2d = 150;
+  player2d = 120;
   
   //ball setup
   ballx = width/2;
   bally = 300;
-  balld = 100;
+  balld = 70;
   
-  vx = 2;
-  vy = 3;
+  vx = 1;
+  vy = 2;
   
   //music. loop();
   //music.amp(0.2);
@@ -54,22 +56,22 @@ void setup() {
 
 void draw() {
   background(white);
+  line(0, 150, 600, 150);
+  line(0, 450, 600, 450);
   
   //player 1
   strokeWeight(5);
   stroke(black);
-  fill(white);
+  fill(blue);
   circle(player1x, player1y, player1d);
-  fill(255,0,0);
+  fill(blue);
   textSize(30);
   text(p1score, 100, 50);
   
   //player 2
-  strokeWeight(5);
-  stroke(white);
-  fill(black);
+  fill(green);
   circle(player2x, player2y, player2d);
-  fill(255,0,0);
+  fill(green);
   textSize(30);
   text(p2score, 500, 550);
   
@@ -85,11 +87,11 @@ void draw() {
   
   if (bally > 700) {
     bally = 300;
-    p1score = p1score + 1;
+   p1score = p1score + 1;
   }
   
-  if (bally > -100) {
-    bally = 300;
+  if (bally < -100) {
+   bally = 300;
     p2score = p2score + 1;
   }
   
@@ -98,18 +100,47 @@ void draw() {
   if (sKey) player1y +=7;
   if (aKey) player1x -= 7;
   if (dKey) player1x += 7;
+ 
   if (upKey) player2y -= 7;
   if (downKey) player2y += 7;
   if (leftKey) player2x -= 7;
   if (rightKey) player2x += 7;
   
-  //bouncing code
-  if (bally <= 0) { //top
-    vy = vy * -0.9;
-    bally = 0;
+  //player1 boundries
+  if (player1y >= 100) {
+    player1y = 95;
   }
   
+  if (player1y <= -60) {
+    player1y = -55;
+  }
   
+  if (player1x >= 660) {
+    player1x = 655;
+  }
+  
+  if (player1x <= -60) {
+    player1x = -55;
+  }
+  
+ //player1 boundries
+ if (player2y <= 500) {
+    player2y = 505;
+  }
+  
+  if (player2y >= 660) {
+    player2y = 655;
+  }
+  
+  if (player2x >= 660) {
+    player2x = 655;
+  }
+  
+  if (player2x <= -60) {
+    player2x = -55;
+  }
+  
+  //bouncing code
   if (ballx <= 0) { //right
     vx = vx * -0.9;
     ballx = 0;
@@ -123,24 +154,15 @@ void draw() {
   if ( dist(player1x, player1y, ballx, bally) <= player1d/2 + balld/2 ) {
     vx = (ballx - player1x)/5; 
     vy = (bally - player1y)/5;
-    p1score = p1score + 1;
     ballx = width/2;
   }
   
   if ( dist(player2x, player2y, ballx, bally) <= player2d/2 + balld/2 ) {
     vx = (ballx - player2x)/5; 
     vy = (bally - player2y)/5;
-    p1score = p1score + 1;
     ballx = width/2;
     //fail.play();
-  }
-  
-  //if ( dist(width/2, height, ballx, bally) <= 100 + balld/2 ) {
-    //p1score = p1score + 1;
-    //ballx = width/2;
-    //bally = 50;
- // }
-    
+  }   
 }
 
 void mouseReleased () {
