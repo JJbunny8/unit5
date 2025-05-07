@@ -26,9 +26,12 @@ float player2x, player2y, player2d;
 //Ball variables
 float ballx, bally, balld;
 float vx, vy;
+float ball2x, ball2y, ball2d;
+float vx2, vy2;
 
 //object variables
 float object1x, object1y, object2x, object2y;
+float ovx, ovy;
 
 //Score variables
 int p1score, p2score;
@@ -56,8 +59,24 @@ void setup() {
   bally = 300;
   balld = 70;
   
-  vx = 1;
-  vy = 2;
+  vx = 2;
+  vy = 3;
+  
+  ball2x = width/2;
+  ball2y = 300;
+  ball2d = 70;
+  
+  vx2 = -2;
+  vy2 = -3;
+  
+  //oject steup
+  object1x = 250;
+  object1y = 300;
+  object2x = 350;
+  object2y = 300;
+  
+  ovx = -3;
+  ovy = -4;
   
   //music. loop();
   //music.amp(0.2);
