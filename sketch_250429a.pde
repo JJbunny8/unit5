@@ -29,9 +29,9 @@ float vx, vy;
 float ball2x, ball2y, ball2d;
 float vx2, vy2;
 
-//object variables
-float object1x, object1y, object2x, object2y;
-float ovx, ovy;
+//block variables
+float blockx;
+float bvx, bvy;
 
 //Score variables
 int p1score, p2score;
@@ -44,61 +44,55 @@ boolean wKey, sKey, aKey, dKey, upKey, downKey, leftKey, rightKey;
 void setup() {
   //loading assets
   //fail = new SoundFile(this, "FAILURE.wav");
- //music = new SoundFile(this, "MUSIC.mp3");
+  //music = new SoundFile(this, "MUSIC.mp3");
   size(600, 600, P2D);
   player1x = width/2;
   player1y = 0;
   player1d = 120;
-  
+
   player2x = width/2;
   player2y = height;
   player2d = 120;
-  
+
   //ball setup
   ballx = width/2;
   bally = 300;
   balld = 70;
-  
-  vx = 2;
+
+  vx = 3;
   vy = 3;
-  
+
   ball2x = width/2;
-  ball2y = 300;
+  ball2y = height/2;
   ball2d = 70;
-  
-  vx2 = -2;
+
+  vx2 = -3;
   vy2 = -3;
-  
-  //oject steup
-  object1x = 250;
-  object1y = 300;
-  object2x = 350;
-  object2y = 300;
-  
-  ovx = -3;
-  ovy = -4;
-  
+
+  //block steup
+  blockx = 0;
+  bvx = 3;
+
+
   //music. loop();
   //music.amp(0.2);
   //music. pan();
-  
 }
 
 void draw() {
   if (mode == INTRO) {
     intro();
-  }else if (mode == GAME) {
+  } else if (mode == GAME) {
     game();
-  }else if (mode == PAUSE) {
+  } else if (mode == PAUSE) {
     pause();
-  }else if (mode == GAMEOVER) {
+  } else if (mode == GAMEOVER) {
     gameOver();
-  }else {
+  } else {
     println ("Error, mode is " + mode);
   }
 }
-
 //void mouseReleased () {
-  //fail.stop();
-  //fail.play();
+//fail.stop();
+//fail.play();
 //}
