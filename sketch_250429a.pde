@@ -18,6 +18,8 @@ color black = #000000;
 color pink =  #FDD4DE;
 color blue =  #bde0fe;
 color green = #b9fbc0;
+color yellow = #fbf8cc;
+color purple = #cfbaf0;
 
 // Player variables
 float player1x, player1y, player1d;
@@ -30,7 +32,7 @@ float ball2x, ball2y, ball2d;
 float vx2, vy2;
 
 //block variables
-float blockx;
+float blockx, blocky, blockd;
 float bvx, bvy;
 
 //Score variables
@@ -71,6 +73,8 @@ void setup() {
 
   //block steup
   blockx = 0;
+  blocky = 280;
+  blockd = 40;
   bvx = 3;
 
 
@@ -93,6 +97,7 @@ void draw() {
   }
 }
 //void mouseReleased () {
+ //mode = mode +1;
 //fail.stop();
 //fail.play();
 //}
