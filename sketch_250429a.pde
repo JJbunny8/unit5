@@ -6,7 +6,7 @@
 
 // mode varibles
 int mode;
-
+                                                 
 final int INTRO = 0;
 final int GAME = 1;
 final int PAUSE = 2;
@@ -71,12 +71,6 @@ void setup() {
   vx2 = -3;
   vy2 = -3;
 
-  //block steup
-  blockx = 0;
-  blocky = 280;
-  blockd = 40;
-  bvx = 3;
-
 
   //music. loop();
   //music.amp(0.2);
@@ -92,6 +86,8 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER) {
     gameOver();
+  } else if (p2score == 10) {
+    round2();
   } else {
     println ("Error, mode is " + mode);
   }
