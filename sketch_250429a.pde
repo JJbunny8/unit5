@@ -11,6 +11,8 @@ final int INTRO = 0;
 final int GAME = 1;
 final int PAUSE = 2;
 final int GAMEOVER = 3;
+final int ROUND2 = 4;
+
 
 //Colour Pallette
 color white = #ffffff;
@@ -86,7 +88,7 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER) {
     gameOver();
-  } else if (p2score == 10) {
+  } else if (mode == ROUND2) {
     round2();
   } else {
     println ("Error, mode is " + mode);
