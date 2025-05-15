@@ -31,6 +31,10 @@ boolean leftKey, rightKey;
 int []x; // declaration
 int []y;
 
+int n;
+
+float brickd;
+
 void setup() {
  size(800, 800, P2D);
   px = width/2;
@@ -45,9 +49,12 @@ void setup() {
   vx = 3;
   vy = 3;
   
+  
   //set up array of bricks
-  x = new int[3];  //instantiation
-  y = new int [3];
+  brickd = 100;
+  n = 4;
+  x = new int[n];  //instantiation
+  y = new int [n];
   
   x [0] = 100;
   y [0] = 100;
@@ -58,6 +65,8 @@ void setup() {
   x [2] = 700;
   y [2] = 100;
   
+  x [3] = 250;
+  y [3] = 200;
 }
   
   void draw() {
