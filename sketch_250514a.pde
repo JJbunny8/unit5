@@ -4,7 +4,7 @@
 
 // mode varibles
 int mode;
-                                                 
+
 final int INTRO = 0;
 final int GAME = 1;
 
@@ -27,49 +27,55 @@ float vx, vy;
 //Keyboard variables
 boolean leftKey, rightKey;
 
-//Brick Variables
+//Arrays Variables
 int []x; // declaration
 int []y;
-
+boolean[] alive;
+int brickd;
 int n;
+int tempx, tempy;
 
-float brickd;
+//Score variables
+int score;
 
 void setup() {
- size(800, 800, P2D);
+  size(1000, 1000, P2D);
   px = width/2;
   py = height;
   pd = 120;
-  
+
   //ball setup
   ballx = width/2;
-  bally = height/2;
+  bally = width/2;
   balld = 50;
-  
+
   vx = 3;
   vy = 3;
-  
-  
-  //set up array of bricks
-  brickd = 100;
-  n = 4;
-  x = new int[n];  //instantiation
-  y = new int [n];
-  
-  x [0] = 100;
-  y [0] = 100;
-  
-  x [1] = 400;
-  y [1] = 100;
-  
-  x [2] = 700;
-  y [2] = 100;
-  
-  x [3] = 250;
-  y [3] = 200;
+
+  brickd = 70;
+  n = 36;
+  x = new int[n];
+  y = new int[n];
+  alive = new boolean[n];
+
+  tempx = 100;
+  tempy = 100;
+
+  int i = 0;
+  while (i < n) {
+    x[i] = tempx;
+    y[i] = tempy;
+    alive[i] = true;
+    tempx = tempx + 100;
+    if (tempx == width) {
+      tempx = 100;
+      tempy = tempy + 100;
+    }
+    i = i + 1;
+  }
 }
-  
-  void draw() {
+
+void draw() {
   if (mode == INTRO) {
     intro();
   } else if (mode == GAME) {
@@ -78,5 +84,3 @@ void setup() {
     println ("Error, mode is " + mode);
   }
 }
-
-  
