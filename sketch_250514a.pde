@@ -47,10 +47,10 @@ void setup() {
   //ball setup
   ballx = width/2;
   bally = width/2;
-  balld = 50;
+  balld = 45;
 
-  vx = 3;
-  vy = 3;
+  vx = 15;
+  vy = 15;
 
   brickd = 70;
   n = 36;
