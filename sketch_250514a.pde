@@ -11,11 +11,12 @@ final int GAME = 1;
 //Colour Pallette
 color white = #ffffff;
 color black = #000000;
-color pink =  #FDD4DE;
-color blue =  #bde0fe;
-color green = #b9fbc0;
+color pink =  #FF0088;
+color darkblue = #030558;
+color blue =  #0033FF;
+color teal =  #00FBFF;
 color yellow = #fbf8cc;
-color purple = #cfbaf0;
+color purple = #B700FF;
 
 // Player variables
 float px, py, pd;
@@ -35,10 +36,24 @@ int brickd;
 int n;
 int tempx, tempy;
 
+//Gif variables
+PImage[] gif;
+int numberOfFrames;
+int f;
+
 //Score variables
 int score;
 
 void setup() {
+  numberOfFrames = 61;
+  gif = new PImage[numberOfFrames];
+
+  int a = 0;
+  while (a < numberOfFrames) {
+    gif[a] = loadImage("frame_"+a+"_delay-0.1s.gif");
+    a = a + 1;
+  }
+
   size(1000, 1000, P2D);
   px = width/2;
   py = height;
