@@ -7,6 +7,8 @@ int mode;
 
 final int INTRO = 0;
 final int GAME = 1;
+final int PAUSE = 2;
+final int GAMEOVER = 3;
 
 //Colour Pallette
 color white = #ffffff;
@@ -41,8 +43,9 @@ PImage[] gif;
 int numberOfFrames;
 int f;
 
-//Score variables
+//Score & Lives variables
 int score;
+int life;
 
 void setup() {
   numberOfFrames = 61;
@@ -53,6 +56,9 @@ void setup() {
     gif[a] = loadImage("frame_"+a+"_delay-0.1s.gif");
     a = a + 1;
   }
+  
+  score = 0;
+  life = 3;
 
   size(1000, 1000, P2D);
   px = width/2;
@@ -62,7 +68,7 @@ void setup() {
   //ball setup
   ballx = width/2;
   bally = width/2;
-  balld = 45;
+  balld = 46;
 
   vx = 15;
   vy = 15;
@@ -95,6 +101,11 @@ void draw() {
     intro();
   } else if (mode == GAME) {
     game();
+  } else if (mode == PAUSE) {
+    pause();
+  } else if (mode == GAMEOVER) {
+    gameover();
+    win();
   } else {
     println ("Error, mode is " + mode);
   }
