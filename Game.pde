@@ -1,24 +1,33 @@
 void gameClicks() {
+  mode = PAUSE;
 }
 
 void game() {
-  background(white);
+  background(darkblue);
 
-  //player------------------------------------------------------
+  //paddle------------------------------------------------------
   strokeWeight(5);
   stroke(black);
-  fill(pink);
+  fill(255);
   circle(px, py, pd);
 
-  //player movement
-  if (leftKey) px -= 10;
-  if (rightKey) px += 10;
+  //paddle movement
+  if (leftKey) px -= 20;
+  if (rightKey) px += 20;
 
-  //player bounce code
+  //paddle boundries
+  if (px > 940) {
+    px = 939;
+  }
+
+  if (px < 60) {
+    px = 61;
+  }
+
+  //paddle bounce code
   if ( dist(px, py, ballx, bally) <= pd/2 + balld/2 ) {
     vx = (ballx - px)/5;
     vy = (bally - py)/5;
-    ballx = width/2;
   }
 
   //ball---------------------------------------------------------
@@ -46,40 +55,50 @@ void game() {
     ballx = width;
   }
 
+  //score & lives------------------------------------------------------------
+  fill(255);
+  textSize(40);
+  text(life, 50, 970);
+
+  text(score, 950, 970);
+
   if (bally > 1025) {
+    life = life - 1;
     ballx = width/2;
     bally = height/2;
   }
-  
-  fill(0);
-  textSize(40);
-  text(score, 50, 970);
-  
-  //if (bally > 700) {
-    //bally = 300;
-    //ballx = 300;
-    //p1score = p1score + 1;
-  //}
-  
+
+  if (life == 0) {
+    mode = GAMEOVER;
+  }
+
+  if (score == 3) {
+    mode = GAMEOVER;
+  }
+//}
+
   // bricks----------------------------------------------------
+//void reset (int i) {
   int i = 0;
   while (i < n) {
     if (alive[i] == true) {
       manageBrick(i);
     }
     i = i + 1;
-  }
+  } 
 }
 
 void manageBrick (int i) {
-  if (y[i] == 100) fill(purple);
-  if (y[i] == 200) fill(blue);
-  if (y[i] == 300) fill(green);
-  if (y[i] == 400) fill(yellow);
+  if (y[i] == 100) fill(pink);
+  if (y[i] == 200) fill(purple);
+  if (y[i] == 300) fill(blue);
+  if (y[i] == 400) fill(teal);
   circle(x[i], y[i], brickd);
+
   if ( dist(ballx, bally, x[i], y[i]) <= balld/2 + brickd/2 ) {
-    vx = (ballx - x[i])/10;
-    vy = (bally - y[i])/10;
+    vx = (ballx - x[i])/3;
+    vy = (bally - y[i])/3;
     alive[i] = false;
+    score = score + 1;
   }
 }
