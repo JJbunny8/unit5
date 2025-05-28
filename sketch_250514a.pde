@@ -1,6 +1,12 @@
+import processing.sound.*;
+
 //Jennifer Wu
 //May 14, 2025
 //2-3
+
+
+SoundFile fail, success;
+AudioPlayer song;
 
 // mode varibles
 int mode;
@@ -38,6 +44,8 @@ int brickd;
 int n;
 int tempx, tempy;
 
+PFont crash;
+
 //Gif variables
 PImage[] gif;
 int numberOfFrames;
@@ -48,6 +56,13 @@ int score;
 int life;
 
 void setup() {
+  crash = createFont("Crash.ttf", 200);
+  
+  
+  fail = new SoundFile(this, "FAILURE.wav");
+  success = new SoundFile(this, "SUCCESS.wav");
+  song = new (this, "Song.mp3");
+   
   numberOfFrames = 61;
   gif = new PImage[numberOfFrames];
 
