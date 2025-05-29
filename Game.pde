@@ -64,16 +64,19 @@ void game() {
 
   if (bally > 1025) {
     life = life - 1;
+    fail.play();
     ballx = width/2;
     bally = height/2;
   }
 
   if (life == 0) {
     mode = GAMEOVER;
+      n = 36;
   }
 
   if (score == 3) {
     mode = GAMEOVER;
+      n = 36;
   }
 //}
 
@@ -99,6 +102,7 @@ void manageBrick (int i) {
     vx = (ballx - x[i])/3;
     vy = (bally - y[i])/3;
     alive[i] = false;
+    success.play();
     score = score + 1;
   }
 }

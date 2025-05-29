@@ -5,8 +5,7 @@ import processing.sound.*;
 //2-3
 
 
-SoundFile fail, success;
-AudioPlayer song;
+SoundFile fail, success, song;
 
 // mode varibles
 int mode;
@@ -58,10 +57,9 @@ int life;
 void setup() {
   crash = createFont("Crash.ttf", 200);
   
-  
-  fail = new SoundFile(this, "FAILURE.wav");
-  success = new SoundFile(this, "SUCCESS.wav");
-  song = new (this, "Song.mp3");
+  fail = new SoundFile(this, "Fail.mp3");
+  success = new SoundFile(this, "Success.mp3");
+  song = new SoundFile(this, "Song.mp3");
    
   numberOfFrames = 61;
   gif = new PImage[numberOfFrames];
@@ -93,7 +91,11 @@ void setup() {
   x = new int[n];
   y = new int[n];
   alive = new boolean[n];
-
+  
+ song.loop();
+ song.amp(0.1);
+  //music. pan();
+  
   tempx = 100;
   tempy = 100;
 
