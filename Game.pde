@@ -57,9 +57,11 @@ void game() {
 
   //score & lives------------------------------------------------------------
   fill(255);
-  textSize(40);
-  text(life, 50, 970);
+  textSize(30);
+  text("LIVES", 50, 970);
+  text(life, 100, 970);
 
+  text("SCORE", 900, 970);
   text(score, 950, 970);
 
   if (bally > 1025) {
@@ -78,10 +80,8 @@ void game() {
     mode = GAMEOVER;
       n = 36;
   }
-//}
 
-  // bricks----------------------------------------------------
-//void reset (int i) {
+// bricks----------------------------------------------------
   int i = 0;
   while (i < n) {
     if (alive[i] == true) {
