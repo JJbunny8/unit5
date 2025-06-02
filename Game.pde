@@ -5,7 +5,7 @@ void gameClicks() {
 void game() {
   background(darkblue);
 
-  //paddle------------------------------------------------------
+//paddle------------------------------------------------------
   strokeWeight(5);
   stroke(black);
   fill(255);
@@ -30,7 +30,7 @@ void game() {
     vy = (bally - py)/5;
   }
 
-  //ball---------------------------------------------------------
+//ball---------------------------------------------------------
   strokeWeight(3);
   fill(255);
   circle(ballx, bally, balld);
@@ -55,14 +55,15 @@ void game() {
     ballx = width;
   }
 
-  //score & lives------------------------------------------------------------
-  fill(255);
+//score & lives------------------------------------------------------------
+  fill(pink);
   textSize(30);
-  text("LIVES", 50, 970);
-  text(life, 100, 970);
+  text("LIVES", 70, 970);
+  text(life, 150, 970);
 
-  text("SCORE", 900, 970);
-  text(score, 950, 970);
+  fill(purple);
+  text("SCORE", 885, 970);
+  text(score, 965, 970);
 
   if (bally > 1025) {
     life = life - 1;
@@ -76,7 +77,7 @@ void game() {
       n = 36;
   }
 
-  if (score == 3) {
+  if (score == 36) {
     mode = GAMEOVER;
       n = 36;
   }

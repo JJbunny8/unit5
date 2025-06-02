@@ -6,5 +6,5 @@ void pause() {
   fill(255);
   textSize(100);
   textAlign(CENTER, CENTER);
-  text("Pause", 500, 600);
+  text("PAUSE", 500, 550);
 }

@@ -4,10 +4,9 @@ import processing.sound.*;
 //May 14, 2025
 //2-3
 
-
 SoundFile fail, success, song;
 
-// mode varibles
+//Mode varibles
 int mode;
 
 final int INTRO = 0;
@@ -43,6 +42,7 @@ int brickd;
 int n;
 int tempx, tempy;
 
+//Font variable
 PFont crash;
 
 //Gif variables
@@ -94,10 +94,9 @@ void setup() {
   
  song.loop();
  song.amp(0.1);
-  //music. pan();
-  
-  tempx = 100;
-  tempy = 100;
+ 
+ tempx = 100;
+ tempy = 100;
 
   int i = 0;
   while (i < n) {

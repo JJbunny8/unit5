@@ -1,11 +1,13 @@
 void gameoverClicks() {
   mode = INTRO;
   n = 36;
+  
   int i = 0;
   while (i < n) {
     alive[i] = true;
     i = i + 1;
   }
+  
   life = 3;
   score = 0;
   ballx = width/2;
@@ -34,7 +36,7 @@ void gameover() {
 }
 
 void win() {
-  if (score == 3) {
+  if (score == 36) {
    image(gif[f], 0, 0, width, height);
   if (frameCount % 2 == 0) {
     f = f + 1;
