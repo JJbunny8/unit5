@@ -1,30 +1,25 @@
 class Spike {
-  //instance variables or fields
-  float x, y, x;
-  
-}
+  //Instance variables
+  float x, y, w;
 
-  Star() {
-    x = random(0, width);
-    y = random(0, height);
-    vx = 0;
-    vy = random(1, 5);
-    size = vy;
-    h = int(random(0,255));
-    s = 255;
-    b = 255;
+  //Constructor
+  Spike() {
+    x = random(width);
+    y = random(height);
+    w = random(100, 300);
   }
 
-  //behavior functions: these define what a star does
   void show() {
-    fill(h, s, b);
-    square(x, y, size);
+    stroke(0);
+    strokeWeight(2);
+    fill(255);
+    ellipse(x, y, w, w/2);
   }
 
-  void act() {
-    y = y + vy;
-    if (y > height+size) {
-      y = -size;
+  void shrink() {
+    if (w > 0) {
+      y = y - 4;
+      w = w - 2;
     }
   }
 }
