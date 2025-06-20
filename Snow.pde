@@ -15,7 +15,7 @@ class Snow {
   //behavior functions: these define what a star does
   void show() {
     fill(offwhite);
-    square(x, y, size);
+    circle(x, y, size);
   }
 
   void act() {

@@ -6,8 +6,8 @@ class Moon {
 
   //constructors
   Moon() {
-    x = random(width);
-    y = random(height);
+    x = width/2;
+    y = height/2;
     size = random(1000);
   }
 

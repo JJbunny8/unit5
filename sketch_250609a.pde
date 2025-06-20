@@ -3,9 +3,8 @@
 //2-3
 
 //Colours
-color lightblue = #caf0f8;
-color blue = #B2C6D8;
-color yellow = #ffb703;
+//color lightblue = #caf0f8;
+//color blue = #B2C6D8;
 color offwhite = #E2F1F7;
 
 Snow[] Snowflakes;
@@ -14,9 +13,11 @@ int numsnow;
 Moon[] myMoons;
 int nummoons;
 
+Sled[] sleds;
+int numsleds;
+
 void setup () {
   size(800, 800, P2D);
-  background(0);
   rectMode(CENTER);
 
   numsnow = 200;
@@ -36,6 +37,15 @@ void setup () {
     myMoons[n] = new Moon();
     n++;
   }
+  
+  numsleds = 10;
+  sleds = new Sled[numsleds]; //constructor
+
+  int s = 0;
+  while (s < numsleds) {
+    sleds[s] = new Sled();
+    s++;
+  }
   stroke(255);
   strokeWeight(1);
 }
@@ -43,8 +53,6 @@ void setup () {
 void draw () {
   fill(0);
   rect(width/2, height/2, width, height);
-  fill(0);
-  rect(width/2, 700, 800, 200);
   fill(250);
   circle(width/2, height/2, 200);
   noFill();
@@ -55,10 +63,16 @@ void draw () {
     n++;
   }
   
-  fill(255);
-  rect(400, 600, width, height/2);
-  
   noStroke();
+  fill(255);
+  ellipse(200, 850, 1500, height);
+  int s = 0;
+  while (s < numsleds) {
+    sleds[s].show();
+    sleds[s].act();
+    s++;
+  }
+
   int i = 0;
   while (i < numsnow) {
     Snowflakes[i].show();
