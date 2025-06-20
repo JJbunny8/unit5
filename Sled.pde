@@ -2,7 +2,6 @@ class Sled {
 
   //instance variables or fields
   float x, y, vx, vy, size;
-  int h, s, b;
 
   //constructor
   Sled() {
