@@ -3,8 +3,6 @@
 //2-3
 
 //Colours
-//color lightblue = #caf0f8;
-//color blue = #B2C6D8;
 color offwhite = #E2F1F7;
 
 Snow[] Snowflakes;
@@ -79,5 +77,4 @@ void draw () {
     Snowflakes[i].act();
     i++;
   }
- 
 }
