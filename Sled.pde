@@ -4,9 +4,7 @@ class Sled {
   float x, y, vx, vy, size;
   int h, s, b;
 
-  //constructor: special function that defines how
-  //             a object of this class is born.
-  //             Defines initial values for fields.
+  //constructor
   Sled() {
     x = random(-350, 350);
     y = random(450, 750);
@@ -15,7 +13,7 @@ class Sled {
     size = vy*42;
   }
 
-  //behavior functions: these define what a star does
+  //behavior functions
   void show() {
     fill(230);
     circle(x, y-10, 20);
